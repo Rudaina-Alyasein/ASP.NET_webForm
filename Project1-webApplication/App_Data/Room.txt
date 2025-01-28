@@ -1,0 +1,6 @@
+1|room 1|irbid|Small
+2|room 2|amman|Medium
+1|room 1|amman|Medium
+4|room 4|irbid|Medium
+4|room 4|amman|Medium
+6|room 6|irbid|Large
