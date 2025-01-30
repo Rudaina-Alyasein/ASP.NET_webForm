@@ -4,3 +4,4 @@
 4|room 4|irbid|Medium
 4|room 4|amman|Medium
 6|room 6|irbid|Large
+22j|jsk|jks|Medium

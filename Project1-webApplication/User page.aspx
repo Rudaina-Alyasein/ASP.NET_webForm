@@ -11,6 +11,90 @@
 <body>
         <form id="form1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
+                <%-- navbar--%>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <!-- Logo on the left -->
+    <a class="navbar-brand" href="#">Logo</a>
+
+    <!-- Toggle button for mobile view -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar content with items centered in larger screens -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Left and center links -->
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Products
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Stationery</a></li>
+            <li><a class="dropdown-item" href="#">Books</a></li>
+            <li><a class="dropdown-item" href="#">School Supplies</a></li>
+            <li><a class="dropdown-item" href="#">Office Supplies</a></li>
+            <li><a class="dropdown-item" href="#">Art Supplies</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#About">About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Contact us</a>
+        </li>
+      </ul>
+
+      <!-- Right side (Cart, Notifications, Profile, Sign In) -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <!-- Notifications Icon -->
+        <li class="nav-item"style="display: none;">
+          <a href="#" class="nav-link">
+            <i class="fa fa-bell" style="font-size: 24px; margin-top: 7px;"></i>
+            <span class="badge bg-danger" style="background-color: #E65100!important;">3</span> 
+          </a>
+        </li>
+        <!-- Cart Icon -->
+        <li class="nav-item"style="display: none;">
+          <a href="#" class="nav-link">
+            <i class="fa fa-shopping-cart" style="font-size: 24px; margin-top: 7px;"></i>
+            <span class="badge bg-success" style="background-color: #E65100!important;">2</span> 
+          </a>
+        </li>
+        <!-- Favorite Icon -->
+        <li class="nav-item"style="display: none;">
+          <a href="#" class="nav-link">
+            <i class="fa fa-heart" style="font-size: 24px; margin-top: 7px;"></i>
+          </a>
+        </li>
+        <!-- Profile Image -->
+          <li class="nav-item">
+              <asp:LinkButton ID="ProfileLink" runat="server" CssClass="nav-link" OnClick="Profile_Click">
+                  <asp:Image ID="ProfileImage" runat="server" CssClass="rounded-circle" ImageUrl="assets/img/book.jpg" Width="35px" Height="35px" AlternateText="Profile" />
+              </asp:LinkButton>
+          </li>
+
+
+
+
+          <li class="nav-item" >
+              <asp:Button ID="signInBtn1" runat="server" Text="Log out"
+                  CssClass="btn btn-outline-primary nav-link"
+                  Style="font-size: 18px; color: black;"
+                 
+                   />
+          </li>
+
+         
+
+      </ul>
+    </div>
+  </div>
+</nav>
 
     <div class="container-fluid mt-5">
         <!-- Cart Section -->
@@ -23,6 +107,14 @@
                 <div class="d-flex mb-3">
                     <asp:Button ID="btnShowBooks1" runat="server" CssClass="btn btn-success ms-3" Text="Show Books" OnClick="btnShowBooks1_Click" />
                 </div>
+                <div class="mb-3">
+                    <asp:TextBox ID="txt" runat="server" class="form-control" placeholder="Search book..." />
+                </div>
+                    <asp:Button ID="Button1" runat="server" CssClass="btn btn-success ms-3" Text="Search" OnClick="SearchBook_Click" />
+
+               
+
+
             </div>
         </div>
 
@@ -33,6 +125,8 @@
             <table  class="table table-bordered">
                 <thead>
                     <tr>
+                     <th scope="col">id</th>
+
                         <th scope="col">Title</th>
                         <th scope="col">Description</th>
                     </tr>

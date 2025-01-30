@@ -14,6 +14,7 @@
     <form id="form1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
+
     <div class="container-fluid mt-5">
         <!-- Cart Section -->
         <h2>Book Cart</h2>
@@ -25,6 +26,8 @@
                 <div class="d-flex mb-3">
                     <asp:Button ID="btnAddBook" runat="server" CssClass="btn btn-primary" Text="Add Book" OnClientClick="showAddBookModal(); return false;" />
                     <asp:Button ID="btnShowBooks" runat="server" CssClass="btn btn-success ms-3" Text="Show Books" OnClick="btnShowBooks_Click" />
+                    <asp:Button ID="btnEditBooks" runat="server" CssClass="btn btn-success ms-3" Text="Edit Book" OnClientClick="showEditBookModal(); return false;" />
+
                 </div>
             </div>
         </div>
@@ -39,6 +42,10 @@
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
+                            <label for="bookTitle" class="form-label">ID</label>
+                            <asp:TextBox ID="ID_book1" runat="server" CssClass="form-control" />
+                        </div>
+                        <div class="mb-3">
                             <label for="bookTitle" class="form-label">Book Title</label>
                             <asp:TextBox ID="bookTitle" runat="server" CssClass="form-control" />
                         </div>
@@ -47,17 +54,45 @@
                             <asp:TextBox ID="bookDescription" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control" />
                         </div>
                         <asp:Button ID="btnSubmitBook" runat="server" Text="Add Book" CssClass="btn btn-primary" OnClick="btnAddBook_Click" />
+
                     </div>
                 </div>
             </div>
         </div>
+         <!-- Modal for Edit Book -->
+ <div class="modal fade" id="EditBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title" id="EditBookModalLabel">Edit Book</h5>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div class="modal-body">
+                 <div class="mb-3">
+                     <label for="TextBox1" class="form-label">ID</label>
+                     <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" />
+                 </div>
+                 <div class="mb-3">
+                     <label for="TextBox2" class="form-label">Book Title</label>
+                     <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" />
+                 </div>
+                 <div class="mb-3">
+                     <label for="TextBox3" class="form-label">Book Description</label>
+                     <asp:TextBox ID="TextBox3" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control" />
+                 </div>
+                 <asp:Button ID="Button2" runat="server" Text="Edit Book" CssClass="btn btn-primary" OnClick="btnEditBook_Click" />
 
+             </div>
+         </div>
+     </div>
+ </div>
         <!-- Table to Display Books -->
         <div id="bookTableContainer" runat="server" class="mt-4" style="display: none;">
             <h4>Books List</h4>
             <table  class="table table-bordered">
                 <thead>
                     <tr>
+                         <th scope="col">id</th>
                         <th scope="col">Title</th>
                         <th scope="col">Description</th>
                     </tr>
@@ -148,6 +183,10 @@
         }
         function showAddRoomModal() {
             var myModal = new bootstrap.Modal(document.getElementById('addRoomModal'));
+            myModal.show();
+        }
+        function showEditBookModal() {
+            var myModal = new bootstrap.Modal(document.getElementById('EditBookModal'));
             myModal.show();
         }
     </script>

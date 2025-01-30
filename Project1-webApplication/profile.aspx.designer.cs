@@ -11,7 +11,7 @@ namespace Project1_webApplication
 {
 
 
-    public partial class User_page
+    public partial class profile
     {
 
         /// <summary>
@@ -24,111 +24,93 @@ namespace Project1_webApplication
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ScriptManager1 control.
+        /// profileLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor profileLink;
 
         /// <summary>
-        /// ProfileLink control.
+        /// signOutButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ProfileLink;
+        protected global::System.Web.UI.WebControls.Button signOutButton;
 
         /// <summary>
-        /// ProfileImage control.
+        /// firstName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ProfileImage;
+        protected global::System.Web.UI.WebControls.TextBox firstName;
 
         /// <summary>
-        /// signInBtn1 control.
+        /// lastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button signInBtn1;
+        protected global::System.Web.UI.WebControls.TextBox lastName;
 
         /// <summary>
-        /// btnShowBooks1 control.
+        /// email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnShowBooks1;
+        protected global::System.Web.UI.WebControls.TextBox email;
 
         /// <summary>
-        /// txt control.
+        /// currentPassword1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt;
+        protected global::System.Web.UI.WebControls.TextBox currentPassword1;
 
         /// <summary>
-        /// Button1 control.
+        /// new_password control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.TextBox new_password;
 
         /// <summary>
-        /// bookTableContainer1 control.
+        /// confirm_password control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bookTableContainer1;
+        protected global::System.Web.UI.WebControls.TextBox confirm_password;
 
         /// <summary>
-        /// bookTableBody1 control.
+        /// SaveChanges control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bookTableBody1;
+        protected global::System.Web.UI.WebControls.Button SaveChanges;
 
         /// <summary>
-        /// btnShowRooms1 control.
+        /// lblMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnShowRooms1;
-
-        /// <summary>
-        /// roomTableContainer1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl roomTableContainer1;
-
-        /// <summary>
-        /// roomTableBody1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl roomTableBody1;
+        protected global::System.Web.UI.WebControls.Label lblMessage;
     }
 }

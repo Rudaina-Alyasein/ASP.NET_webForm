@@ -25,13 +25,13 @@ namespace Project1_webApplication
 
             string file = Server.MapPath("newSignUp.txt");
 
-            // التحقق من وجود الملف وإذا لم يكن موجودًا، يتم إنشاؤه
+            // التأكد من أن الملف موجود، إذا لم يكن، سيتم إنشاؤه
             if (!File.Exists(file))
             {
                 using (StreamWriter sw = File.CreateText(file)) ;
             }
 
-            // التحقق من الفيلدات
+            // التأكد من أن جميع الحقول مملوءة
             if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(password) ||
                 string.IsNullOrEmpty(repeat_password) || string.IsNullOrEmpty(phone))
             {
@@ -39,22 +39,29 @@ namespace Project1_webApplication
             }
             else
             {
-                // إذا كانت الفيلدات مكتملة نبدأ في المعالجة
-                using (StreamWriter sw = new StreamWriter(file, true))
+                // إذا كانت كلمة المرور لا تطابق
+                if (password != repeat_password)
                 {
-                    if (password != repeat_password)
+                    lblMessage1.Text = "Passwords do not match.";
+                }
+                else
+                {
+                    // توليد GUID كمعرف فريد للمستخدم
+                    string userId = Guid.NewGuid().ToString();
+
+                    // حفظ البيانات مع الـ User ID في الملف النصي
+                    using (StreamWriter sw = new StreamWriter(file, true))
                     {
-                        lblMessage1.Text = "Passwords do not match.";
+                        sw.WriteLine($"{userId},{firstName},{lastName},{Email},{password},{phone}");
                     }
-                    else
-                    {
-                        sw.WriteLine($"{firstName},{lastName},{Email},{password},{phone}");
-                       
-                        Response.Redirect("SignIn.aspx");
-                    }
+
+                    // إعادة التوجيه إلى صفحة تسجيل الدخول بعد النجاح
+                    Response.Redirect("SignIn.aspx");
                 }
             }
         }
+
+
 
     }
 }

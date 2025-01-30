@@ -14,7 +14,7 @@ namespace Project1_webApplication
         private const string adminPassword = "rudaina123";
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
 
 
         }
@@ -23,54 +23,58 @@ namespace Project1_webApplication
         {
             string Email = Email3.Text;
             string password = password3.Text;
+
             if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(password))
             {
                 lblLoginMessage2.Text = "Please fill in both fields.";
                 return;
             }
+
+
             if (Email == adminEmail && password == adminPassword)
             {
                 lblLoginMessage2.Text = "Admin login successful!";
-                Response.Redirect("AdminPage.aspx"); 
+                Response.Redirect("AdminPage.aspx");
                 return;
             }
 
-           
+
             string file = Server.MapPath("newSignUp.txt");
-
             bool loginSuccessful = false;
+            string userID = "";
 
-            foreach(var line in File.ReadLines(file))
+            foreach (var line in File.ReadLines(file))
             {
                 var parts = line.Split(',');
-                if (parts.Length == 5)
+                if (parts.Length == 6)
                 {
-                    string storedEmail = parts[2];
-                    string storedPassword = parts[3];
-                  
-                        if (storedEmail == Email && storedPassword == password)
-                        {
-                            loginSuccessful = true;
-                            break;
-                        }
-                    
-                      
-                }
+                     userID = parts[0];
+                    string storedEmail = parts[3];
+                    string storedPassword = parts[4];
 
+
+                    if (storedEmail == Email && storedPassword == password)
+                    {
+                        loginSuccessful = true;
+                        break;
+                    }
+                }
             }
+
             if (loginSuccessful)
             {
-               
-                Response.Redirect("User page.aspx");
+
+             
+                Response.Redirect($"home.aspx?UserId={userID}");
 
             }
+
             else
             {
                 lblLoginMessage2.Text = "Invalid username or password.";
             }
-            
-
 
         }
+
     }
 }

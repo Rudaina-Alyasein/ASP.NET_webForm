@@ -7,7 +7,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Project1_webApplication
+
 {
+    public class Book
+    {
+        public string ID { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+    }
+
     public partial class User_page : System.Web.UI.Page
     {
         private string filePath = HttpContext.Current.Server.MapPath("~/App_Data/Book.txt");
@@ -33,16 +41,19 @@ namespace Project1_webApplication
                 foreach (string line in lines)
                 {
                     string[] parts = line.Split('|');
-                    if (parts.Length == 2)
+                    if (parts.Length == 3)
                     {
-                        string title = parts[0];
-                        string description = parts[1];
+                        string id = parts[0];
+                        string title = parts[1];
+                        string description = parts[2];
 
 
                         TableRow row = new TableRow();
+                        TableCell idCell = new TableCell { Text = id };
+
                         TableCell titleCell = new TableCell { Text = title };
                         TableCell descriptionCell = new TableCell { Text = description };
-
+                        row.Cells.Add(idCell);
                         row.Cells.Add(titleCell);
                         row.Cells.Add(descriptionCell);
 
@@ -54,7 +65,7 @@ namespace Project1_webApplication
             }
         }
 
-      
+
         protected void btnShowRooms1_Click(object sender, EventArgs e)
         {
             roomTableBody1.Controls.Clear();
@@ -92,6 +103,77 @@ namespace Project1_webApplication
                 roomTableContainer1.Style["display"] = "block";
             }
         }
-      
+
+        protected void Profile_Click(object sender, EventArgs e)
+        {
+
+            Response.Redirect("profile.aspx");
+
+
+        }
+
+
+
+        protected void SearchBook_Click(object sender, EventArgs e)
+        {
+            string searchQuery = txt.Text.ToLower(); // الحصول على كلمة البحث وتحويلها إلى أحرف صغيرة
+            var filteredBooks = new List<Book>();  // قائمة لتخزين الكتب التي تطابق البحث
+
+            if (File.Exists(filePath))
+            {
+                string[] lines = File.ReadAllLines(filePath); // قراءة جميع الأسطر من الملف
+
+                foreach (string line in lines)
+                {
+                    string[] parts = line.Split('|'); // تقسيم السطر إلى أجزاء
+                    if (parts.Length == 3) // التأكد من أن السطر يحتوي على 3 أجزاء (ID، العنوان، الوصف)
+                    {
+                        string id = parts[0];
+                        string title = parts[1];
+                        string description = parts[2];
+
+                        // التحقق إذا كان العنوان أو الوصف يحتوي على كلمة البحث
+                        if (title.ToLower().Contains(searchQuery) || description.ToLower().Contains(searchQuery))
+                        {
+                            filteredBooks.Add(new Book
+                            {
+                                ID = id,
+                                Title = title,
+                                Description = description
+                            });
+                        }
+                    }
+                }
+
+                // عرض النتائج في جدول
+                bookTableBody1.Controls.Clear(); // مسح البيانات القديمة
+                foreach (var book in filteredBooks)
+                {
+                    TableRow row = new TableRow();
+
+                    TableCell idCell = new TableCell { Text = book.ID };
+                    TableCell titleCell = new TableCell { Text = book.Title };
+                    TableCell descriptionCell = new TableCell { Text = book.Description };
+
+                    row.Cells.Add(idCell);
+                    row.Cells.Add(titleCell);
+                    row.Cells.Add(descriptionCell);
+
+                    bookTableBody1.Controls.Add(row);
+                }
+
+                // إظهار جدول الكتب
+                if (filteredBooks.Count > 0)
+                {
+                    bookTableContainer1.Style["display"] = "block"; // إظهار الجدول إذا كانت هناك نتائج
+                }
+                else
+                {
+                    bookTableContainer1.Style["display"] = "none"; // إخفاء الجدول إذا لم توجد نتائج
+                }
+            }
+        }
+
+
     }
 }

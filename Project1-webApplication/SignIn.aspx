@@ -58,6 +58,7 @@ img:hover {
 </style>
 </head>
 <body>
+
     <form id="form1" runat="server">
          <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -96,8 +97,8 @@ img:hover {
                   </div>
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                       <asp:Button ID="Login_btn" runat="server" class="btn  btn-lg" style="background-color:#0097B2!important; color: white; padding:10px 40px" Text="Log in"  OnClick="Login_btn_Click"/>
+
                   </div>
-                    <!-- Here you define the label for displaying the login message -->
                     <asp:Label ID="lblLoginMessage2" runat="server" ForeColor="Red"></asp:Label>
                 </form>
               </div>

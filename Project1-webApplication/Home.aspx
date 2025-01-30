@@ -75,11 +75,11 @@
             </a>
           </li>
           <!-- Profile Image -->
-          <li class="nav-item" style="display: none;">
-            <a href="#" class="nav-link">
-              <img src="assets/img/avatar.jpg" alt="Profile" class="rounded-circle" style="width: 35px; height: 35px;">
-            </a>
-          </li>
+            <li class="nav-item">
+                <a id="profileLink" runat="server" class="nav-link">
+                    <img src="assets/img/book.jpg" alt="Profile" class="rounded-circle" style="width: 35px; height: 35px;">
+                </a>
+            </li>
 
             <li class="nav-item" >
                 <asp:Button ID="signInBtn1" runat="server" Text="Sign In"
